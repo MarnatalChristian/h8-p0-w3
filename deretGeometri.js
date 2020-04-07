@@ -1,12 +1,25 @@
 function tentukanDeretGeometri(arr) {
     var check = 0;
+    var temp = [];
     for(let i = 0; i < arr.length; i++) {
-        if(arr[i - 1] / arr[i] === arr[i - 2] / arr[i - 1]) {
-        check = true
-        }
-        else {
-            check = false
-        }
+        for(let i = 0; i < arr.length; i++) {
+            selisih = arr[i + 1] / arr[i]
+              if(arr[i + 1] !== undefined) {
+                  temp.push(selisih)
+              }
+          }
+          for(let j = 0; j < temp.length; j++) {
+            if(temp[j] === temp[j+1]){
+               check++
+               
+            }
+          }
+          if(check == temp.length - 1) {
+            return true
+         }
+         else if(check !== temp.length -1){
+            return false
+         }
     }
     return check
 }
@@ -17,3 +30,4 @@ function tentukanDeretGeometri(arr) {
   console.log(tentukanDeretGeometri([2, 4, 6, 8])); // false
   console.log(tentukanDeretGeometri([2, 6, 18, 54])); // true
   console.log(tentukanDeretGeometri([1, 2, 3, 4, 7, 9])); // false
+  console.log(tentukanDeretGeometri([1, 1, 1, 2, 1, 1, 1])); // false

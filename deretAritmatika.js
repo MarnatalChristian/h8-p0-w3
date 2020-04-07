@@ -1,14 +1,26 @@
 function tentukanDeretAritmatika(arr) {
     var check = 0;
+    var selisih = 0
+    var temp = []
     for(let i = 0; i < arr.length; i++) {
-       if(arr[i - 1] - arr[i] === arr[i - 2] - arr[i - 1]) {
-        check = true
-       }
-       else {
-        check = false
-       }
+      selisih = arr[i + 1] - arr[i]
+        if(arr[i + 1] !== undefined) {
+            temp.push(selisih)
+        }
     }
-    return check
+    for(let j = 0; j < temp.length; j++) {
+      if(temp[j] === temp[j+1]){
+         check++
+         
+      }
+    }
+    if(check == temp.length - 1) {
+      return true
+   }
+   else if(check !== temp.length -1){
+      return false
+   }
+    
   }
   
   // TEST CASES
@@ -17,3 +29,4 @@ function tentukanDeretAritmatika(arr) {
   console.log(tentukanDeretAritmatika([2, 4, 6, 8])); // true
   console.log(tentukanDeretAritmatika([2, 6, 18, 54])); // false
   console.log(tentukanDeretAritmatika([1, 2, 3, 4, 7, 9])); // false
+  console.log(tentukanDeretAritmatika([1, 2, 1, 2,3, 4])); // false
